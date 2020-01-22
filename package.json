@@ -12,6 +12,7 @@
     "clsx": "1.0.4",
     "codemirror": "5.42.2",
     "codemirror-activine": "0.0.1",
+    "codemirror-formatting": "1.0.0",
     "draft-js": "0.10.5",
     "gh-pages": "2.0.1",
     "googleapis": "40.0.1",

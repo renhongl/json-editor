@@ -222,7 +222,7 @@ p {
 
 .show-preview-btn {
   position: absolute !important;
-  right: 36px;
+  right: 66px;
   width: 30px !important;
   height: 30px !important;
   padding: 0 !important;
@@ -236,6 +236,16 @@ p {
   height: 30px !important;
   padding: 0 !important;
   top: 3px;
+}
+
+.jv-light-con {
+  font-family: monospace !important;
+  overflow: initial !important;
+}
+
+.jv-dark-con {
+  font-family: monospace !important;
+  overflow: initial !important;
 }
 
 .import-md-btn {

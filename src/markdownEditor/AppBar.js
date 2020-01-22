@@ -90,7 +90,7 @@ class MenuAppBar extends React.Component {
   };
 
   goToGithub = () => {
-    window.location = "https://github.com/renhongl/markdown-editor";
+    window.location = "https://github.com/renhongl/json-editor";
   };
 
   toggleSetting = () => {

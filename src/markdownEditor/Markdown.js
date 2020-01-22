@@ -6,6 +6,8 @@ import Tooltip from "@material-ui/core/Tooltip";
 import AlertDialog from "./Dialog";
 import Help from "./Help";
 import { I18n } from "react-i18nify";
+import "codemirror/mode/javascript/javascript.js";
+import "codemirror-formatting";
 
 activine(CodeMirror);
 
@@ -27,6 +29,14 @@ export default class Markdown extends React.Component {
     }
   }
 
+  formatJson = () => {
+    const range = {
+      from: this.myCodeMirror.getCursor(true),
+      to: this.myCodeMirror.getCursor(false)
+    };
+    this.myCodeMirror.autoFormatRange(range.from, range.to);
+  };
+
   renderMarkdown() {
     let codeDom = document.querySelector(".CodeMirror");
     if (codeDom) {
@@ -35,7 +45,7 @@ export default class Markdown extends React.Component {
     const { value, handleValueChange } = this.props;
     this.myCodeMirror = CodeMirror(document.querySelector(".markdown"), {
       value: value,
-      mode: { name: "json", highlightFormatting: true },
+      mode: { name: "application/ld+json", highlightFormatting: true },
       lineNumbers: true,
       theme: "default",
       indentUnit: 4,
@@ -122,18 +132,18 @@ export default class Markdown extends React.Component {
                 </div>
               ))}
           </div>
-          {/* <Tooltip title={I18n.t("markdown syntax")} placement="bottom">
+          <Tooltip title={I18n.t("markdown syntax")} placement="bottom">
             <IconButton
               aria-label="help"
               className="help-btn"
               size="small"
-              onClick={this.toggleHelp}
+              onClick={this.formatJson}
             >
               <i className="material-icons" fontSize="small">
-                help_outline
+                format_list_bulleted
               </i>
             </IconButton>
-          </Tooltip> */}
+          </Tooltip>
           <Tooltip title={I18n.t("full screen")} placement="bottom">
             <IconButton
               size="small"
