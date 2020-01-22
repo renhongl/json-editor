@@ -94,6 +94,7 @@ export default class Markdown extends React.Component {
       fullScreen
     } = this.props;
     // const { showHelp } = this.state;
+
     return (
       <div className="markdown-container">
         {/* <AlertDialog
