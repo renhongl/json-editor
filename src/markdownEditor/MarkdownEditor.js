@@ -42,7 +42,7 @@ const styles = {
   }
 };
 
-let settingStr = window.localStorage.getItem("pomeloSettings");
+let settingStr = window.localStorage.getItem("pomeloJsonSettings");
 let settingObj = settingStr ? JSON.parse(settingStr) : {};
 
 let defaultPrimary = settingObj.primary || "#555555";
@@ -66,7 +66,7 @@ const th = createMuiTheme({
 });
 
 const getDefaultText = () => {
-  let settingStr = window.localStorage.getItem("pomeloSettings");
+  let settingStr = window.localStorage.getItem("pomeloJsonSettings");
   let settingObj = settingStr ? JSON.parse(settingStr) : {};
   if (settingObj.lang === "en") {
     return defaultText;
@@ -86,7 +86,7 @@ export default class MarkdownEditor extends React.Component {
 
   constructor(props) {
     super(props);
-    let historyList = window.localStorage.getItem("pomeloMd");
+    let historyList = window.localStorage.getItem("pomeloJson");
     if (historyList && JSON.parse(historyList).length !== 0) {
       historyList = JSON.parse(historyList);
       historyList[0].open = true;
@@ -188,7 +188,7 @@ export default class MarkdownEditor extends React.Component {
     let currentDoc = this.state.fileList.filter(
       (item, inde) => currentIndex === inde
     );
-    let currentSaveStr = window.localStorage.getItem("pomeloMd");
+    let currentSaveStr = window.localStorage.getItem("pomeloJson");
     let currentSaveArr = currentSaveStr ? JSON.parse(currentSaveStr) : [];
 
     currentSaveArr.forEach(item => {
@@ -202,7 +202,7 @@ export default class MarkdownEditor extends React.Component {
       currentDoc[0].save = true;
       currentSaveArr.push(currentDoc[0]);
     }
-    window.localStorage.setItem("pomeloMd", JSON.stringify(currentSaveArr));
+    window.localStorage.setItem("pomeloJson", JSON.stringify(currentSaveArr));
     let newFileList = JSON.parse(JSON.stringify(this.state.fileList));
     newFileList.forEach((item, i) => {
       if (i === currentIndex) {
@@ -237,10 +237,13 @@ export default class MarkdownEditor extends React.Component {
   }
 
   saveToLocalStorage(key, value) {
-    let settingStr = window.localStorage.getItem("pomeloSettings");
+    let settingStr = window.localStorage.getItem("pomeloJsonSettings");
     let settingObj = settingStr ? JSON.parse(settingStr) : {};
     settingObj[key] = value;
-    window.localStorage.setItem("pomeloSettings", JSON.stringify(settingObj));
+    window.localStorage.setItem(
+      "pomeloJsonSettings",
+      JSON.stringify(settingObj)
+    );
   }
 
   handleSettingChange = (key, value, type) => {
@@ -419,7 +422,7 @@ export default class MarkdownEditor extends React.Component {
         item.open = false;
       }
     });
-    window.localStorage.setItem("pomeloMd", JSON.stringify(newFileList));
+    window.localStorage.setItem("pomeloJson", JSON.stringify(newFileList));
     this.setState(
       {
         fileList: newFileList
@@ -449,14 +452,14 @@ export default class MarkdownEditor extends React.Component {
     this.setState({
       fileList: newFileList
     });
-    let currentSaveStr = window.localStorage.getItem("pomeloMd");
+    let currentSaveStr = window.localStorage.getItem("pomeloJson");
     let currentSaveArr = currentSaveStr ? JSON.parse(currentSaveStr) : [];
     currentSaveArr.forEach(item => {
       if (item.id === openId) {
         item.open = true;
       }
     });
-    window.localStorage.setItem("pomeloMd", JSON.stringify(currentSaveArr));
+    window.localStorage.setItem("pomeloJson", JSON.stringify(currentSaveArr));
   };
 
   switchCurrent = index => {
@@ -554,7 +557,7 @@ export default class MarkdownEditor extends React.Component {
       item.save = true;
     });
     let cache = JSON.stringify(newFileList);
-    window.localStorage.setItem("pomeloMd", cache);
+    window.localStorage.setItem("pomeloJson", cache);
     this.setState({
       fileList: newFileList
     });
@@ -571,14 +574,14 @@ export default class MarkdownEditor extends React.Component {
     this.setState({
       fileList: newFileList
     });
-    let currentSaveStr = window.localStorage.getItem("pomeloMd");
+    let currentSaveStr = window.localStorage.getItem("pomeloJson");
     let currentSaveArr = currentSaveStr ? JSON.parse(currentSaveStr) : [];
     currentSaveArr.forEach(item => {
       if (item.id === id) {
         item.title = value;
       }
     });
-    window.localStorage.setItem("pomeloMd", JSON.stringify(currentSaveArr));
+    window.localStorage.setItem("pomeloJson", JSON.stringify(currentSaveArr));
   };
 
   closeSnack = () => {
@@ -634,10 +637,10 @@ export default class MarkdownEditor extends React.Component {
   };
 
   deleteById(id) {
-    let currentSaveStr = window.localStorage.getItem("pomeloMd");
+    let currentSaveStr = window.localStorage.getItem("pomeloJson");
     let currentSaveArr = currentSaveStr ? JSON.parse(currentSaveStr) : [];
     let newFiles = currentSaveArr.filter(item => item.id !== id);
-    window.localStorage.setItem("pomeloMd", JSON.stringify(newFiles));
+    window.localStorage.setItem("pomeloJson", JSON.stringify(newFiles));
   }
 
   showMessage = msg => {
