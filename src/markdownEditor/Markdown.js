@@ -3,8 +3,8 @@ import CodeMirror from "codemirror";
 import IconButton from "@material-ui/core/IconButton";
 import activine from "codemirror-activine";
 import Tooltip from "@material-ui/core/Tooltip";
-import AlertDialog from "./Dialog";
-import Help from "./Help";
+// import AlertDialog from "./Dialog";
+// import Help from "./Help";
 import { I18n } from "react-i18nify";
 import "codemirror/mode/javascript/javascript.js";
 import "codemirror-formatting";
@@ -93,7 +93,7 @@ export default class Markdown extends React.Component {
       closeFile,
       fullScreen
     } = this.props;
-    const { showHelp } = this.state;
+    // const { showHelp } = this.state;
     return (
       <div className="markdown-container">
         {/* <AlertDialog
