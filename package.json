@@ -1,0 +1,42 @@
+{
+  "name": "json-editor",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "homepage": "http://renhongl.github.io/markdown-editor",
+  "dependencies": {
+    "@material-ui/core": "3.9.0",
+    "@material-ui/icons": "3.0.2",
+    "@material-ui/styles": "4.0.1",
+    "clsx": "1.0.4",
+    "codemirror": "5.42.2",
+    "codemirror-activine": "0.0.1",
+    "draft-js": "0.10.5",
+    "gh-pages": "2.0.1",
+    "googleapis": "40.0.1",
+    "highlight.js": "9.13.1",
+    "html2pdf.js": "0.9.1",
+    "json-viewer-js": "1.0.3",
+    "markdown-it": "8.4.2",
+    "react": "16.5.2",
+    "react-color": "2.17.3",
+    "react-dom": "16.5.2",
+    "react-i18nify": "1.11.14",
+    "react-scripts": "2.0.3",
+    "showdown": "1.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
