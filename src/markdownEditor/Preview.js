@@ -174,7 +174,7 @@ export default class Preview extends React.Component {
   }
 
   render() {
-    const { input } = this.props;
+    // const { input } = this.props;
     // const result = md.render(input);
     return (
       <div className="preview-container">

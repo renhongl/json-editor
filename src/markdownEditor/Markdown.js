@@ -86,12 +86,12 @@ export default class Markdown extends React.Component {
 
   render() {
     const {
-      openFullScreen,
+      // openFullScreen,
       fileList,
       current,
       switchFileById,
-      closeFile,
-      fullScreen
+      closeFile
+      // fullScreen
     } = this.props;
     // const { showHelp } = this.state;
 
