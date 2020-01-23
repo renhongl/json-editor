@@ -8,6 +8,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import { I18n } from "react-i18nify";
 import "codemirror/mode/javascript/javascript.js";
 import "codemirror-formatting";
+// import "codemirror/addon/display/rulers.js";
 
 activine(CodeMirror);
 
@@ -48,7 +49,7 @@ export default class Markdown extends React.Component {
       mode: { name: "application/ld+json", highlightFormatting: true },
       lineNumbers: true,
       theme: "default",
-      indentUnit: 4,
+      indentUnit: 2,
       showCursorWhenSelecting: true,
       autofocus: true,
       cursorScrollMargin: 5,
