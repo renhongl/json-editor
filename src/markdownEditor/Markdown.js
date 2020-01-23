@@ -145,7 +145,7 @@ export default class Markdown extends React.Component {
               </i>
             </IconButton>
           </Tooltip>
-          <Tooltip title={I18n.t("full screen")} placement="bottom">
+          {/* <Tooltip title={I18n.t("full screen")} placement="bottom">
             <IconButton
               size="small"
               className="full-screen-btn"
@@ -173,7 +173,7 @@ export default class Markdown extends React.Component {
                 chrome_reader_mode
               </i>
             </IconButton>
-          </Tooltip>
+          </Tooltip> */}
         </div>
         <div className="markdown" />
       </div>

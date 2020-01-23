@@ -4,6 +4,8 @@ import MarkdownIt from "markdown-it";
 import "highlight.js/styles/atom-one-light.css";
 import { I18n } from "react-i18nify";
 import JsonViewer from "json-viewer-js";
+import IconButton from "@material-ui/core/IconButton";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const md = new MarkdownIt({
   html: true,
@@ -26,32 +28,50 @@ const md = new MarkdownIt({
 });
 
 export default class Preview extends React.Component {
+  state = {
+    expand: false
+  };
+
   componentDidMount() {
     this.addStyles();
-    this.renderJsonView();
+    this.renderJsonView(this.state.expand);
   }
 
-  renderJsonView() {
+  expand = () => {
+    this.renderJsonView(!this.state.expand);
+    this.setState({
+      expand: !this.state.expand
+    });
+  };
+
+  renderJsonView(expand) {
     const content = document.getElementById("content");
-    content.innerHTML = "";
+    if (content) {
+      content.innerHTML = "";
+    } else {
+      return;
+    }
+
     try {
       new JsonViewer({
         container: content,
         data: this.props.input,
-        theme: "light"
+        theme: "light",
+        expand: expand
       });
     } catch (e) {
       new JsonViewer({
         container: content,
         data: `{ "infor": "It's not a json format" }`,
-        theme: "light"
+        theme: "light",
+        expand: expand
       });
     }
   }
 
   componentDidUpdate() {
     this.addStyles();
-    this.renderJsonView();
+    this.renderJsonView(this.state.expand);
   }
 
   addStyles() {
@@ -162,6 +182,19 @@ export default class Preview extends React.Component {
           <div className="preview-title-left">{I18n.t("preview")} </div>
           <div className="preview-title-right">
             <div className="word-count">
+              <Tooltip title={I18n.t("toggle view")} placement="bottom">
+                <IconButton
+                  size="small"
+                  className="help-btn"
+                  onClick={this.expand}
+                >
+                  <i className="material-icons" fontSize="small">
+                    chrome_reader_mode
+                  </i>
+                </IconButton>
+              </Tooltip>
+            </div>
+            {/* <div className="word-count">
               <span className="key">{I18n.t("words")}:</span>&nbsp;
               {
                 input.split(/\s|\t|\n/gi).filter(item => item.trim() !== "")
@@ -171,7 +204,7 @@ export default class Preview extends React.Component {
             <div className="word-count">
               <span className="key">{I18n.t("characters")}:</span>&nbsp;
               {input.length}
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="preview">

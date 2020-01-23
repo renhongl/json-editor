@@ -218,9 +218,9 @@ class MenuAppBar extends React.Component {
                   <MenuItem onClick={() => this.handlePreviewClose("pdf")}>
                     PDF
                   </MenuItem>
-                  <MenuItem onClick={() => this.handlePreviewClose("html")}>
+                  {/* <MenuItem onClick={() => this.handlePreviewClose("html")}>
                     HTML
-                  </MenuItem>
+                  </MenuItem> */}
                   <MenuItem onClick={() => this.handlePreviewClose("md")}>
                     JSON
                   </MenuItem>
@@ -252,9 +252,9 @@ class MenuAppBar extends React.Component {
                   <MenuItem onClick={() => this.handleClose("pdf")}>
                     PDF
                   </MenuItem>
-                  <MenuItem onClick={() => this.handleClose("html")}>
+                  {/* <MenuItem onClick={() => this.handleClose("html")}>
                     HTML
-                  </MenuItem>
+                  </MenuItem> */}
                   <MenuItem onClick={() => this.handleClose("md")}>
                     JSON
                   </MenuItem>
